@@ -15,7 +15,9 @@ namespace TUF_2000M_API
 
             List<DataModel> analysData = new List<DataModel>();
 
-            analysData.Add(new DataModel("Negativ",getNegaEnaAccValue(rowData[22],rowData[23])));
+            analysData.Add(new DataModel("Negative energy accumulator ", getNegaEnaAccValue(rowData[21],rowData[22])));
+            analysData.Add(new DataModel("Temperature #1/inlet ", getTemp1Inlet(rowData[33], rowData[34])));
+            analysData.Add(new DataModel("Signal Quality ", getSignalQua(rowData[92])));
 
             return analysData;
 
