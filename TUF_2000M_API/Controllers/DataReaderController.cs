@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TUF_2000M_API.Controllers
 {
-    [Route("api/[controller]")]
+   
     [ApiController]
+    [Route("[controller]")]
     public class DataReaderController : ControllerBase
     {
         // GET: api/DataReader
@@ -16,11 +17,11 @@ namespace TUF_2000M_API.Controllers
         public List<DataModel> Get()
         {
 
-        return    TUFdataAnalyser.analyseReader();
-            //return new string[] { "value1", "value2" };
-
-
+            return TUFdataAnalyser.analyseReader();
+           
         }
+
+
 
         // GET: api/DataReader/5
         [HttpGet("{id}", Name = "Get")]
