@@ -13,11 +13,11 @@ namespace TUF_2000M_API.Controllers
     {
         // GET: api/DataReader
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<DataModel> Get()
         {
 
-
-            return new string[] { "value1", "value2" };
+        return    TUFdataAnalyser.analyseReader();
+            //return new string[] { "value1", "value2" };
 
 
         }
