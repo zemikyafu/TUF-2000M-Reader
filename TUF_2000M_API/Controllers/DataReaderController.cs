@@ -14,7 +14,7 @@ namespace TUF_2000M_API.Controllers
     {
         // GET: api/DataReader
         [HttpGet]
-        public List<DataModel> Get()
+        public List<DataModel> readTUFData()
         {
 
             return TUFdataAnalyser.analyseReader();
@@ -22,30 +22,11 @@ namespace TUF_2000M_API.Controllers
         }
 
 
+         
 
-        // GET: api/DataReader/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+      
+       
 
-        // POST: api/DataReader
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
-        // PUT: api/DataReader/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

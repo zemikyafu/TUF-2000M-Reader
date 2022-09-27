@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace TUF_2000M_API
 {
@@ -26,6 +27,23 @@ namespace TUF_2000M_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddMvc();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "TUF_200M Data Reader API",
+                    Version = "v1",
+                    Description= "API to read TUF_200M Data"
+                });
+            });
+
+            // Register Swagger  
+            /*   services.AddSwaggerGen(c =>
+               {
+                   c.SwaggerDoc("v1", new Info { Title = "Sample API", Version = "version 1" });
+               });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,7 +52,33 @@ namespace TUF_2000M_API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                if (env.IsDevelopment())
+                {
+                    app.UseDeveloperExceptionPage();
+                }
+
+               
+
+                /*// Enable middleware to serve generated Swagger as a JSON endpoint.  
+                app.UseSwagger();
+
+                // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),  
+                // specifying the Swagger JSON endpoint.  
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                });*/
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TUF_200M Data Reader V1");
+                c.RoutePrefix = String.Empty;
+            });
+
+
 
             app.UseHttpsRedirection();
 
