@@ -86,7 +86,7 @@ namespace TUF_2000M_API
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
