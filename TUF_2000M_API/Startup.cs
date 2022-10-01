@@ -71,7 +71,7 @@ namespace TUF_2000M_API
                  options.TokenValidationParameters = new TokenValidationParameters
                  {
                      ValidateIssuer = true,
-                     ValidateAudience = true,
+                     ValidateAudience = false,
                      ValidateLifetime = true,
                      ValidateIssuerSigningKey = true,
                      ValidIssuer = Configuration["Jwt:Issuer"],
@@ -109,9 +109,8 @@ namespace TUF_2000M_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
